@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [autoSlide, setAutoSlide] = useState(true);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    let slideTimer: number;
+    if (autoSlide) {
+      slideTimer = window.setInterval(() => {
+        setSlideIndex((prev) => (prev + 1) % 2);
+      }, 3000);
+    }
+    return () => clearInterval(slideTimer);
+  }, [autoSlide]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex flex-col min-h-screen">
@@ -30,23 +44,23 @@ function App() {
                 </main>
               </div>
             </div>
-            <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-              <img className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="/Group 19.jpg" alt="Fashion model" />
-            </div>
           </div>
-
           {/* Brand Logos */}
-          <div className="bg-white py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-5 gap-8 items-center justify-items-center">
-                <img src="/images (1) 1.png" alt="Adidas" className="h-12 object-contain" />
-                <img src="/nike.png" alt="Nike" className="h-12 object-contain" />
-                <img src="/versace.png" alt="Versace" className="h-12 object-contain" />
-                <img src="/Frame 32.png" alt="Calvin Klein" className="h-12 object-contain" />
-                <img src="/Frame 33.png" alt="Gucci" className="h-12 object-contain" />
-              </div>
-            </div>
-          </div>
+          {/* <div className="bg-white py-12">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-5 gap-8 items-center justify-items-center">
+      <img src="/Group 19.jpg" alt="Brand logos" className="h-12 object-contain col-span-5" />
+    </div>
+  </div>
+</div> */}
+<div className="bg-white py-15">
+  <div className="w-full mx-auto px-0">
+    <div className="grid grid-cols-9 gap-0 items-center justify-items-center w-full">
+    <img src="/Group 19.jpg" alt="Brand logos" className="h-22 object-cover col-span-9 w-full object-center" />
+    </div>
+  </div>
+</div>
+
 
           {/* New Arrivals */}
           <div className="bg-white py-16">
@@ -104,11 +118,11 @@ function App() {
                 </div>
                 <div className="group bg-white p-4 rounded-lg">
                   <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
-                    <img src="/Frame 60.png" alt="Bestseller" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <img src="/Frame 63.png" alt="Bestseller" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
                   </div>
-                  <h3 className="mt-4 text-sm text-gray-700">Courage Graphic T-shirt</h3>
-                  <p className="mt-1 text-sm font-medium text-gray-900">₹445</p>
+                  <h3 className="mt-4 text-sm text-gray-700">Loose Fit Bermuda Shorts</h3>
+                  <p className="mt-1 text-sm font-medium text-gray-900">₹800</p>
                 </div>
                 <div className="group bg-white p-4 rounded-lg">
                   <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
@@ -133,38 +147,38 @@ function App() {
           {/* Browse by Style */}
           <div className="bg-white py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold mb-8 text-center">BROWSE BY DRESS STYLE</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105">
-                  <img src="/casual-style.jpg" alt="Casual" className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-white text-2xl font-bold mb-2">Casual</span>
-                    <span className="text-white/80 text-sm">Everyday Comfort</span>
+              <h2 className="text-3xl font-bold mb-12 text-center tracking-tight">BROWSE BY dress STYLE</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="relative group overflow-hidden rounded-2xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg">
+                  <img src="/casual-style.jpg" alt="Casual" className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <h3 className="text-3xl font-bold mb-3">Casual</h3>
+                    <p className="text-lg font-medium text-white/90">Everyday Comfort</p>
                   </div>
                 </div>
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105">
-                  <img src="/formal-style.jpg" alt="Formal" className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-white text-2xl font-bold mb-2">Formal</span>
-                    <span className="text-white/80 text-sm">Professional Excellence</span>
+                <div className="relative group overflow-hidden rounded-2xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg">
+                  <img src="/formal-style.jpg" alt="Formal" className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <h3 className="text-3xl font-bold mb-3">Formal</h3>
+                    <p className="text-lg font-medium text-white/90">Professional Excellence</p>
                   </div>
                 </div>
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105">
-                  <img src="/sports-style.jpg" alt="Party" className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-white text-2xl font-bold mb-2">Party</span>
-                    <span className="text-white/80 text-sm">Night Life Ready</span>
+                <div className="relative group overflow-hidden rounded-2xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg">
+                  <img src="/sports-style.jpg" alt="Party" className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <h3 className="text-3xl font-bold mb-3">Party</h3>
+                    <p className="text-lg font-medium text-white/90">Night Life Ready</p>
                   </div>
                 </div>
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105">
-                  <img src="/ethnic-style.jpg" alt="Gym" className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-white text-2xl font-bold mb-2">Gym</span>
-                    <span className="text-white/80 text-sm">Active Lifestyle</span>
+                <div className="relative group overflow-hidden rounded-2xl cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg">
+                  <img src="/ethnic-style.jpg" alt="Gym" className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <h3 className="text-3xl font-bold mb-3">Gym</h3>
+                    <p className="text-lg font-medium text-white/90">Active Lifestyle</p>
                   </div>
                 </div>
               </div>
@@ -172,23 +186,96 @@ function App() {
           </div>
 
           {/* Happy Customers */}
-          <div className="bg-gray-50 py-16">
+          <div className="bg-gray-50 py-16 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl font-bold mb-8 text-center">OUR HAPPY CUSTOMERS</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-gray-600 mb-4">"The quality of their products is amazing. I'm a regular customer now!"</p>
-                  <div className="flex items-center">
-                    <img src="/customer1.jpg" alt="Customer" className="h-10 w-10 rounded-full" />
-                    <div className="ml-3">
-                      <h4 className="text-sm font-medium">John D.</h4>
+              <div className="relative">
+                <div 
+                  className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar transition-transform duration-500 ease-in-out" 
+                  style={{ 
+                    transform: `translateX(-${slideIndex * 100}%)`,
+                    scrollbarWidth: 'none', 
+                    msOverflowStyle: 'none' 
+                  }}
+                  onMouseEnter={() => setAutoSlide(false)}
+                  onMouseLeave={() => setAutoSlide(true)}
+                >
+                  <div className="flex-none w-full md:w-1/3 px-4 snap-center">
+                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center mb-4">
+                        <div className="h-12 w-12 rounded-full bg-gray-200 overflow-hidden">
+                          <img src="/Group 19.jpg" alt="Sarah M." className="w-full h-full object-cover" />
+                        </div>
+                        <div className="ml-4">
+                          <h3 className="font-medium text-gray-900">Sarah Mitchell</h3>
+                          <p className="text-sm text-gray-500">Fashion Enthusiast</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 mb-4">"The quality of their clothes is exceptional! I've been shopping here for months, and every piece I've bought has exceeded my expectations. The customer service is also top-notch."</p>
                       <div className="flex text-yellow-400">
-                        <span>★★★★★</span>
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex-none w-full md:w-1/3 px-4 snap-center">
+                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center mb-4">
+                        <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-lg font-semibold">
+                          <span>RK</span>
+                        </div>
+                        <div className="ml-4">
+                          <h3 className="font-medium text-gray-900">Raj Kumar</h3>
+                          <p className="text-sm text-gray-500">Regular Customer</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 mb-4">"Quick delivery and amazing collection! I love how they keep updating their inventory with the latest trends. The fit is always perfect, and the prices are reasonable."</p>
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex-none w-full md:w-1/3 px-4 snap-center">
+                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center mb-4">
+                        <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-lg font-semibold">
+                          <span>AP</span>
+                        </div>
+                        <div className="ml-4">
+                          <h3 className="font-medium text-gray-900">Aisha Patel</h3>
+                          <p className="text-sm text-gray-500">Style Blogger</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 mb-4">"As a fashion blogger, I'm very particular about where I shop. QuickCart has become my go-to destination for trendy outfits. Their collection is always on point!"</p>
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* Add more testimonials */}
+
+                <div className="flex justify-center mt-6 space-x-2">
+                  {[0, 1, 2].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSlideIndex(index)}
+                      className={`h-2 w-2 rounded-full transition-colors ${slideIndex === index ? 'bg-black' : 'bg-gray-300'}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
