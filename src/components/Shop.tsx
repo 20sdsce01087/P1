@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Product {
   id: number;
@@ -74,6 +75,12 @@ const Shop: React.FC = () => {
         ? prev.filter(s => s !== size)
         : [...prev, size]
     );
+  };
+
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
   };
 
   return (
@@ -166,7 +173,11 @@ const Shop: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map(product => (
-              <div key={product.id} className="group relative">
+              <div 
+                key={product.id} 
+                className="group relative cursor-pointer" 
+                onClick={() => handleProductClick(product.id)}
+              >
                 <div className="aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 transition-opacity duration-300">
                   <div className="relative w-full h-full">
                     <img
@@ -179,14 +190,7 @@ const Shop: React.FC = () => {
                 </div>
                 <div className="mt-4">
                   <h3 className="text-sm text-gray-700">{product.name}</h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    ₹ {product.price}
-                    {product.originalPrice && (
-                      <span className="ml-2 line-through text-gray-400">
-                        ₹ {product.originalPrice}
-                      </span>
-                    )}
-                  </p>
+                  <p className="mt-1 text-sm font-medium text-gray-900">₹{product.price}</p>
                 </div>
               </div>
             ))}
