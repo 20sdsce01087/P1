@@ -131,24 +131,84 @@ const ProductDetail: React.FC = () => {
       {/* You might also like */}
       <div className="mt-16">
         <h2 className="text-xl font-bold text-gray-900 mb-6">You might also like</h2>
-        <div className="grid grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map(id => (
-            <div key={id} className="group">
-              <div className="aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                <img
-                  src={`/related-product${id}.jpg`}
-                  alt={`Related product ${id}`}
-                  className="w-full h-full object-center object-cover"
-                />
-              </div>
-              <div className="mt-4">
-                <h3 className="text-sm text-gray-700">Related Product {id}</h3>
-                <p className="mt-1 text-sm text-gray-500">₹ 220</p>
-              </div>
+        <div className="relative">
+          <div className="overflow-x-auto hide-scrollbar">
+            <div className="inline-flex space-x-6 min-w-full py-2">
+              {[1, 2, 3, 4, 5, 6].map(id => (
+                <div key={id} className="group w-64 flex-shrink-0">
+                  <div className="aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                    <img
+                      src={`/related-product${id}.jpg`}
+                      alt={`Related product ${id}`}
+                      className="w-full h-full object-center object-cover"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-sm text-gray-700 hover:text-black cursor-pointer">Related Product {id}</h3>
+                    <p className="mt-1 text-sm font-medium text-gray-900">₹ 220</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
+
+      {/* Subscription Banner */}
+      <div className="mt-24 bg-gray-50 py-12 px-8 rounded-lg">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Stay Updated with Latest Offers</h2>
+          <p className="text-gray-600 mb-6">Subscribe to our newsletter and get exclusive deals directly in your inbox</p>
+          <div className="flex max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-l-md border-gray-300 focus:ring-black focus:border-black"
+            />
+            <button className="px-6 py-3 bg-black text-white rounded-r-md hover:bg-gray-800 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-24 border-t pt-12 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-4">Company</h3>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="hover:text-black">About Us</a></li>
+              <li><a href="#" className="hover:text-black">Careers</a></li>
+              <li><a href="#" className="hover:text-black">Store Locations</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-4">Help</h3>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="hover:text-black">Order Status</a></li>
+              <li><a href="#" className="hover:text-black">Shipping & Delivery</a></li>
+              <li><a href="#" className="hover:text-black">Returns</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-4">FAQs</h3>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="hover:text-black">Size Guide</a></li>
+              <li><a href="#" className="hover:text-black">Payment Options</a></li>
+              <li><a href="#" className="hover:text-black">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-4">Resources</h3>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="hover:text-black">Terms & Conditions</a></li>
+              <li><a href="#" className="hover:text-black">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-black">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

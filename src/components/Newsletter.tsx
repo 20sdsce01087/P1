@@ -2,36 +2,36 @@ import React from 'react';
 
 const Newsletter: React.FC = () => {
   return (
-    <div className="relative bg-black py-24">
+    <div className="relative bg-black py-12">
       {/* Curved top edge */}
       <div className="absolute top-0 left-0 w-full overflow-hidden" style={{ transform: 'translateY(-98%)' }}>
         <svg
-          viewBox="0 0 1440 320"
-          className="w-full h-20 text-black"
+          viewBox="0 0 1440 120"
+          className="w-full h-12 text-black"
           preserveAspectRatio="none"
           fill="currentColor"
         >
-          <path d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+          <path d="M0,64L60,64C120,64,240,64,360,69.3C480,75,600,85,720,80C840,75,960,53,1080,48C1200,43,1320,53,1380,58.7L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
         </svg>
       </div>
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-6 tracking-tight leading-tight">
-            STAY UPTO DATE ABOUT<br />OUR LATEST OFFERS
+          <h2 className="text-2xl font-bold text-white mb-4 tracking-tight leading-tight">
+            STAY UPTO DATE ABOUT OUR LATEST OFFERS
           </h2>
-          <p className="text-gray-300 mb-10 text-lg">
-            Subscribe to our newsletter and get exclusive offers, new arrival updates, and more.
+          <p className="text-gray-300 mb-6 text-sm">
+            Subscribe to our newsletter and get exclusive offers and updates.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-0">
+          <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-0 max-w-lg mx-auto">
             <input
               type="email"
               placeholder="Enter your email address"
-              className="px-6 py-4 w-full sm:w-96 bg-white text-black rounded-lg sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-gray-500 text-base"
+              className="px-4 py-2 w-full sm:w-72 bg-white text-black rounded-md sm:rounded-r-none focus:outline-none focus:ring-1 focus:ring-white/50 placeholder-gray-500 text-sm"
             />
-            <button className="bg-white text-black px-8 py-4 font-semibold rounded-lg sm:rounded-l-none hover:bg-gray-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-base">
-              Subscribe to Newsletter
+            <button className="bg-white text-black px-6 py-2 font-medium rounded-md sm:rounded-l-none hover:bg-gray-200 transition-all duration-200 text-sm whitespace-nowrap">
+              Subscribe
             </button>
           </div>
         </div>
@@ -40,12 +40,12 @@ const Newsletter: React.FC = () => {
       {/* Curved bottom edge */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ transform: 'translateY(98%)' }}>
         <svg
-          viewBox="0 0 1440 320"
-          className="w-full h-20 text-black"
+          viewBox="0 0 1440 120"
+          className="w-full h-12 text-black"
           preserveAspectRatio="none"
           fill="currentColor"
         >
-          <path d="M0,160L48,176C96,192,192,224,288,240C384,256,480,256,576,234.7C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+          <path d="M0,0L60,5.3C120,11,240,21,360,26.7C480,32,600,32,720,26.7C840,21,960,11,1080,10.7C1200,11,1320,21,1380,26.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
       </div>
     </div>

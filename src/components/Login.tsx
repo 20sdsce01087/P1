@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
@@ -20,6 +21,8 @@ const Login: React.FC = () => {
     e.preventDefault();
     // Handle login logic here
     console.log('Login submitted:', formData);
+    // After successful login, redirect to home page
+    navigate('/');
   };
 
   return (
