@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
+  const navigate = useNavigate();
   const [autoSlide, setAutoSlide] = useState(true);
   const [slideIndex, setSlideIndex] = useState(0);
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
 
   useEffect(() => {
     let slideTimer: number;
@@ -14,6 +19,13 @@ function App() {
     }
     return () => clearInterval(slideTimer);
   }, [autoSlide]);
+
+  const newArrivals = [
+    { id: 1, name: 'Gradient Graphic T-shirt', price: 299, image: '/Frame 34.png' },
+    { id: 2, name: 'Polo with Tipping Details', price: 799, image: '/Frame 34-1.png' },
+    { id: 3, name: 'Black Striped T-shirt', price: 245, image: '/Frame 38.png' },
+    { id: 4, name: 'Skinny Fit Jeans', price: 249, image: '/Frame 38-1.png' }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -45,65 +57,44 @@ function App() {
               </div>
             </div>
           </div>
-          {/* Brand Logos */}
-          {/* <div className="bg-white py-12">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-5 gap-8 items-center justify-items-center">
-      <img src="/Group 19.jpg" alt="Brand logos" className="h-12 object-contain col-span-5" />
-    </div>
-  </div>
-</div> */}
-<div className="bg-white py-15">
-  <div className="w-full mx-auto px-0">
-    <div className="grid grid-cols-9 gap-0 items-center justify-items-center w-full">
-    <img src="/Group 19.jpg" alt="Brand logos" className="h-22 object-cover col-span-9 w-full object-center" />
-    </div>
-  </div>
-</div>
 
+          {/* Brand Logos */}
+          <div className="bg-white py-15">
+            <div className="w-full mx-auto px-0">
+              <div className="grid grid-cols-9 gap-0 items-center justify-items-center w-full">
+                <img src="/Group 19.jpg" alt="Brand logos" className="h-22 object-cover col-span-9 w-full object-center" />
+              </div>
+            </div>
+          </div>
 
           {/* New Arrivals */}
           <div className="bg-white py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl font-bold mb-8">NEW ARRIVALS</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="group">
-                  <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
-                    <img src="/Frame 34.png" alt="Product" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                {newArrivals.map(product => (
+                  <div 
+                    key={product.id} 
+                    className="group cursor-pointer" 
+                    onClick={() => handleProductClick(product.id)}
+                  >
+                    <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                    <p className="mt-1 text-sm font-medium text-gray-900">₹{product.price}</p>
                   </div>
-                  <h3 className="mt-4 text-sm text-gray-700">Gradient Graphic T-shirt</h3>
-                  <p className="mt-1 text-sm font-medium text-gray-900">₹299</p>
-                </div>
-                <div className="group">
-                  <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
-                    <img src="/Frame 34-1.png" alt="Product" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                  </div>
-                  <h3 className="mt-4 text-sm text-gray-700">Polo with Tipping Details</h3>
-                  <p className="mt-1 text-sm font-medium text-gray-900">₹799</p>
-                </div>
-                <div className="group">
-                  <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
-                    <img src="/Frame 38.png" alt="Product" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                  </div>
-                  <h3 className="mt-4 text-sm text-gray-700">Black Striped T-shirt</h3>
-                  <p className="mt-1 text-sm font-medium text-gray-900">₹245</p>
-                </div>
-                <div className="group">
-                  <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative">
-                    <img src="/Frame 38-1.png" alt="Product" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                  </div>
-                  <h3 className="mt-4 text-sm text-gray-700">Skinny Fit Jeans</h3>
-                  <p className="mt-1 text-sm font-medium text-gray-900">₹249</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Top Selling */}
+          {/* Rest of the component */}
           <div className="bg-gray-50 py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl font-bold mb-8">TOP SELLING</h2>
