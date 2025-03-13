@@ -68,6 +68,15 @@ const ProductDetail: React.FC = () => {
       sizes: ['Small', 'Medium', 'Large', 'X-Large']
     },
     {
+      id: 6,
+      name: 'Urban Fashion Wear',
+      price: 890,
+      description: 'Contemporary urban fashion that makes a bold statement. Features premium materials and expert craftsmanship.',
+      images: ['/new image/alex-haigh-fEt6Wd4t4j0-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'gray', 'white'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
       id: 7,
       name: 'Vertical Striped Shirt',
       price: 512,
@@ -78,20 +87,119 @@ const ProductDetail: React.FC = () => {
     },
     {
       id: 8,
-      name: 'Courage Graphic T-shirt',
+      name: 'Casual Wear Collection',
       price: 445,
-      description: 'Bold and inspiring graphic t-shirt featuring a unique courage design. Made from premium cotton.',
+      description: 'Comfortable and stylish casual wear perfect for everyday activities.',
       images: ['/Frame 63.png', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
       colors: ['white', 'gray', 'black'],
       sizes: ['Small', 'Medium', 'Large', 'X-Large']
     },
     {
       id: 9,
-      name: 'Loose Fit Bermuda Shorts',
+      name: 'Summer Collection',
       price: 800,
-      description: 'Comfortable loose fit bermuda shorts perfect for summer casual wear. Features multiple pockets.',
+      description: 'Light and breezy summer wear designed for maximum comfort in warm weather.',
       images: ['/casual-style.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
-      colors: ['beige', 'olive', 'navy'],
+      colors: ['beige', 'white', 'blue'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 10,
+      name: 'Urban Street Style',
+      price: 890,
+      description: 'Contemporary urban style that combines comfort with street fashion trends.',
+      images: ['/dom-hill-nimElTcTNyY-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'gray', 'white'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 11,
+      name: 'Classic Denim Jacket',
+      price: 1100,
+      description: 'Timeless denim jacket with modern details. Perfect for layering and casual outings.',
+      images: ['/christian-bolt-VW5VjskNXZ8-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['blue', 'black', 'gray'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 12,
+      name: 'Premium Cotton Blazer',
+      price: 1200,
+      description: 'Sophisticated cotton blazer perfect for formal occasions. Features premium tailoring.',
+      images: ['/formal-style.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'navy', 'gray'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 13,
+      name: 'Traditional Ethnic Wear',
+      price: 950,
+      description: 'Elegant ethnic wear combining traditional designs with modern comfort.',
+      images: ['/ethnic-style.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['maroon', 'gold', 'blue'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 14,
+      name: 'Sports Collection',
+      price: 780,
+      description: 'High-performance sportswear designed for comfort and functionality.',
+      images: ['/sports-style.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'blue', 'red'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 15,
+      name: 'Casual Street Wear',
+      price: 670,
+      description: 'Trendy street wear that combines style with everyday comfort.',
+      images: ['/new image/haryo-setyadi-acn5ERAeSb4-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'white', 'gray'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 16,
+      name: 'Modern Fashion Collection',
+      price: 920,
+      description: 'Contemporary fashion pieces that define modern style and elegance.',
+      images: ['/new image/kate-skumen-PJRabkuH3_Q-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'white', 'beige'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 17,
+      name: 'Contemporary Style',
+      price: 850,
+      description: 'Modern and sophisticated pieces for the fashion-forward individual.',
+      images: ['/new image/katsiaryna-endruszkiewicz-BteCp6aq4GI-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['white', 'black', 'gray'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 18,
+      name: 'Urban Collection',
+      price: 790,
+      description: 'Urban-inspired fashion that captures the essence of city life.',
+      images: ['/new image/meysam-jarahkar-NMYG69BG_Jg-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'gray', 'white'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 19,
+      name: 'Street Fashion',
+      price: 680,
+      description: 'Bold street fashion that makes a statement.',
+      images: ['/new image/rock-staar-2XcbGfYShfk-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'white', 'red'],
+      sizes: ['Small', 'Medium', 'Large', 'X-Large']
+    },
+    {
+      id: 20,
+      name: 'Fashion Forward',
+      price: 920,
+      description: 'Cutting-edge fashion pieces that set trends.',
+      images: ['/felipe-galvan-AhfrA5VQNpM-unsplash.jpg', '/Frame 34.png', '/Frame 34-1.png', '/Frame 38.png'],
+      colors: ['black', 'white', 'gray'],
       sizes: ['Small', 'Medium', 'Large', 'X-Large']
     }
   ];
