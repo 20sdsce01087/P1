@@ -85,11 +85,11 @@ const Login: React.FC = () => {
               </label>
             </div>
 
-            <div className="text-sm">
+            {/* <div className="text-sm">
               <Link to="#" className="font-medium text-primary hover:text-primary-dark">
                 Forgot your password?
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div>

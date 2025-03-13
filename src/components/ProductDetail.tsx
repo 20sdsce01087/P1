@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext';
 
 interface ProductDetailProps {
   id: number;
@@ -14,6 +15,7 @@ interface ProductDetailProps {
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = React.useState(0);
   const [selectedColor, setSelectedColor] = React.useState('olive');
   const [selectedSize, setSelectedSize] = React.useState('Large');
@@ -210,7 +212,22 @@ const ProductDetail: React.FC = () => {
           </div>
 
           {/* Add to Cart Button */}
-          <button className="w-full mt-8 bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors">
+          <button 
+            onClick={() => {
+              if (product) {
+                addToCart({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  size: selectedSize,
+                  color: selectedColor,
+                  image: product.images[selectedImageIndex],
+                  quantity: quantity
+                });
+              }
+            }} 
+            className="w-full mt-8 bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
+          >
             Add to Cart
           </button>
         </div>
@@ -242,7 +259,7 @@ const ProductDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer
       <footer className="mt-24 border-t pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -278,7 +295,7 @@ const ProductDetail: React.FC = () => {
             </ul>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

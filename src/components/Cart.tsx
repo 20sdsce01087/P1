@@ -1,17 +1,11 @@
 import React from 'react';
-
-interface CartItem {
-  id: number;
-  name: string;
-  size: string;
-  color: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+import { useCart } from '../contexts/CartContext';
 
 const Cart: React.FC = () => {
-  const [cartItems, setCartItems] = React.useState<CartItem[]>([
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
+  const defaultImage = '/product1.jpg';
+
+  const cartItemsList = cartItems.length > 0 ? cartItems : [
     {
       id: 1,
       name: 'Gradient Graphic T-shirt',
@@ -39,17 +33,9 @@ const Cart: React.FC = () => {
       image: '/product3.jpg',
       quantity: 1
     }
-  ]);
+  ];
 
-  const updateQuantity = (id: number, change: number) => {
-    setCartItems(items =>
-      items.map(item =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + change) }
-          : item
-      )
-    );
-  };
+  // Removed local updateQuantity as it's now provided by CartContext
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deliveryFee = 150;
@@ -66,7 +52,7 @@ const Cart: React.FC = () => {
               {cartItems.map(item => (
                 <div key={item.id} className="bg-white p-6 rounded-lg shadow-sm flex gap-6">
                   <img
-                    src={item.image}
+                    src={item.image || defaultImage}
                     alt={item.name}
                     className="w-24 h-24 object-cover rounded-md"
                   />
@@ -91,6 +77,14 @@ const Cart: React.FC = () => {
                         </button>
                       </div>
                       <span className="font-medium">₹ {item.price}</span>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="ml-auto text-red-600 hover:text-red-800 transition-colors"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 </div>
