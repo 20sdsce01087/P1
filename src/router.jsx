@@ -10,6 +10,10 @@ import Register from './components/Register.jsx';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 import NotFound from './components/NotFound.jsx';
 import AboutUs from './components/AboutUs.jsx';
+import AdminLayout from './components/admin/AdminLayout';
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminProducts from './components/admin/AdminProducts';
+import AdminOrders from './components/admin/AdminOrders';
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +55,24 @@ export const router = createBrowserRouter([
       {
         path: 'about',
         element: <AboutUs />
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />
+      },
+      {
+        path: 'products',
+        element: <AdminProducts />
+      },
+      {
+        path: 'orders',
+        element: <AdminOrders />
       }
     ]
   }
