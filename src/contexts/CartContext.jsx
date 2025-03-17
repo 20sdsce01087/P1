@@ -1,33 +1,16 @@
 import React, { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
-interface CartItem {
-  id: number;
-  name: string;
-  size: string;
-  color: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+const CartContext = createContext(undefined);
 
-interface CartContextType {
-  cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
-  updateQuantity: (id: number, change: number) => void;
-  getCartCount: () => number;
-  removeFromCart: (id: number) => void;
-}
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
-
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id) => {
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
-  const addToCart = (newItem: CartItem) => {
+  const addToCart = (newItem) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(
         item => item.id === newItem.id && item.size === newItem.size && item.color === newItem.color
@@ -45,7 +28,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  const updateQuantity = (id: number, change: number) => {
+  const updateQuantity = (id, change) => {
     setCartItems(items =>
       items.map(item =>
         item.id === id
@@ -64,6 +47,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export const useCart = () => {
